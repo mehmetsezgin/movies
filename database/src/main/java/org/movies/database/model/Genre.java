@@ -1,8 +1,6 @@
 package org.movies.database.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by emehsez on 15.05.2016.
@@ -11,7 +9,8 @@ import javax.persistence.Id;
 public class Genre {
 
     @Id
-    @GeneratedValue(generator = "ID_GENERATOR")
+    @SequenceGenerator(name="movie_seq", sequenceName="MOVIE_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="movie_seq")
     protected Long id;
 
     public Long getId(){

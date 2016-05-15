@@ -2,8 +2,7 @@ package org.movies.database.model;
 
 import com.sun.istack.internal.Nullable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -11,10 +10,12 @@ import java.util.Date;
 /**
  * Created by emehsez on 15.05.2016.
  */
+@Entity
 public class Actor {
 
     @Id
-    @GeneratedValue(generator = "ID_GENERATOR")
+    @SequenceGenerator(name="movie_seq", sequenceName="MOVIE_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="movie_seq")
     protected Long id;
 
     public Long getId() {

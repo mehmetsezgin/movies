@@ -1,7 +1,6 @@
 package org.movies.database.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -10,10 +9,12 @@ import java.util.Date;
 /**
  * Created by emehsez on 15.05.2016.
  */
+@Entity
 public class Movie {
 
     @Id
-    @GeneratedValue(generator = "ID_GENERATOR")
+    @SequenceGenerator(name="movie_seq", sequenceName="MOVIE_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="movie_seq")
     protected Long id;
 
     public Long getId() {
