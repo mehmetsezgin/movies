@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by emehsez on 15.05.2016.
@@ -29,6 +31,17 @@ public class Movie {
     )
     protected String title;
 
+    protected Date releaseDate;
+
+    protected String language;
+
+    protected BigDecimal budget;
+
+    protected BigDecimal boxOffice;
+
+    @OneToMany(mappedBy = "movie")
+    protected Set<MovieGenre> movieGenres = new HashSet<>();
+
     public String getTitle() {
         return title;
     }
@@ -36,8 +49,6 @@ public class Movie {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    protected Date releaseDate;
 
     public Date getReleaseDate() {
         return releaseDate;
@@ -47,8 +58,6 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    protected String language;
-
     public String getLanguage() {
         return language;
     }
@@ -56,8 +65,6 @@ public class Movie {
     public void setLanguage(String language) {
         this.language = language;
     }
-
-    protected BigDecimal budget;
 
     public BigDecimal getBudget() {
         return budget;
@@ -67,13 +74,15 @@ public class Movie {
         this.budget = budget;
     }
 
-    protected BigDecimal boxOffice;
-
     public BigDecimal getBoxOffice() {
         return boxOffice;
     }
 
     public void setBoxOffice(BigDecimal boxOffice) {
         this.boxOffice = boxOffice;
+    }
+
+    public Set<MovieGenre> getMovieGenres() {
+        return movieGenres;
     }
 }

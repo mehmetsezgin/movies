@@ -68,7 +68,7 @@ public class JPATest extends TransactionManagerTest {
     public void afterMethod() throws Exception {
         if (JPA != null) {
             beforeJPAClose();
-            if (!"true".equals(System.getProperty("keepSchema"))) {
+            if ("true".equals(System.getProperty("keepSchema"))) {
                 JPA.dropSchema();
             }
             JPA.getEntityManagerFactory().close();
